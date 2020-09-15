@@ -14,7 +14,7 @@ public class MatchingBrackets {
 
             if (symbol == '(') {
                 stack.push(i);
-            } else if (symbol == ')'){
+            } else if (symbol == ')') {
                 int openingIndex = stack.pop();
                 int closingIndex = i;
                 System.out.println(expression.substring(openingIndex, closingIndex + 1));
