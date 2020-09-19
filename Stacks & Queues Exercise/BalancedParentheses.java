@@ -12,23 +12,28 @@ public class BalancedParentheses {
         brackets.put("]", "[");
         brackets.put("}", "{");
 
-        ArrayDeque<String> openBrackets = new ArrayDeque<>();
+        ArrayDeque<String> bracketsStack = new ArrayDeque<>();
 
         String str = scan.nextLine();
         boolean balanced = true;
 
         for (int i = 0; i < str.length(); i++) {
             if (brackets.containsKey(String.valueOf(str.charAt(i)))) {
-
-                if (!openBrackets.pop().equals(brackets.get(String.valueOf(str.charAt(i))))) {
-                    balanced = false;
+                if (!bracketsStack.isEmpty()) {
+                    String symbol = bracketsStack.pop();
+                    if (!symbol.equals(brackets.get(String.valueOf(str.charAt(i)))))
+                        balanced = false;
+                    continue;
                 }
-                continue;
+                else {
+                    balanced = false;
+                    break;
+                }
             }
-            openBrackets.push(String.valueOf(str.charAt(i)));
+            bracketsStack.push(String.valueOf(str.charAt(i)));
         }
 
-        if (balanced)
+        if (balanced && bracketsStack.isEmpty())
             System.out.println("YES");
         else
             System.out.println("NO");
