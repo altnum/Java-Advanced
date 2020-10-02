@@ -2,7 +2,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-public class CountSymbolsEx {
+public class CountSymbols {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
