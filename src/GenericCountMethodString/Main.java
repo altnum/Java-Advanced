@@ -1,4 +1,4 @@
-package GenericBox;
+package GenericCountMethodString;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,12 +9,17 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         int n = Integer.parseInt(reader.readLine());
-        Box<String> box = new Box();
+        Box<String> box = new Box<>();
+
         for (int i = 0; i < n; i++) {
             String text = reader.readLine();
             box.Add(text);
         }
 
-        System.out.println(box);
+        String element = reader.readLine();
+
+        int num = box.Compare(element);
+
+        System.out.println(num);
     }
 }

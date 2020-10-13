@@ -1,4 +1,4 @@
-package GenericBox;
+package GenericBoxOfInteger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,10 +9,10 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         int n = Integer.parseInt(reader.readLine());
-        Box<String> box = new Box();
+        Box<Integer> box = new Box();
         for (int i = 0; i < n; i++) {
-            String text = reader.readLine();
-            box.Add(text);
+            int num = Integer.parseInt(reader.readLine());
+            box.Add(num);
         }
 
         System.out.println(box);

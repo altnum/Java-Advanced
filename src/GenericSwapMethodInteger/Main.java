@@ -1,4 +1,4 @@
-package GenericBox;
+package GenericSwapMethodInteger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,12 +9,16 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         int n = Integer.parseInt(reader.readLine());
-        Box<String> box = new Box();
+        Box<Integer> box = new Box<>();
+
         for (int i = 0; i < n; i++) {
-            String text = reader.readLine();
-            box.Add(text);
+            Integer integer = Integer.parseInt(reader.readLine());
+            box.Add(integer);
         }
 
-        System.out.println(box);
+        String[] info = reader.readLine().split("\\s+");
+        box.Swap(Integer.parseInt(info[0]), Integer.parseInt(info[1]));
+
+        System.out.println(box.toString());
     }
 }
