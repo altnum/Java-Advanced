@@ -33,7 +33,7 @@ public class Person {
 
     public void setAge(int age) {
         if (age <= 0) {
-            throw new IllegalArgumentException("ValidationData.FirstAndReserveTeam.Person age cannot be zero or negative integer");
+            throw new IllegalArgumentException("ValidationData.FirstAndReserveTeam.ShoppingSpree.DefineAnInterfacePerson.Person age cannot be zero or negative integer");
         }
 
         this.age = age;

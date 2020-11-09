@@ -33,7 +33,7 @@ public class ProductShop {
                     entry.getValue().entrySet()
                             .stream()
                             .forEach(innerEntry -> {
-                                System.out.printf("Product: %s, Price: %.1f%n",
+                                System.out.printf("ShoppingSpree.Product: %s, Price: %.1f%n",
                                         innerEntry.getKey(), innerEntry.getValue());
                             });
                 });
