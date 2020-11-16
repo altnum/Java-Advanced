@@ -8,13 +8,13 @@ public class Main {
 // Initialize entity
         Car volvo = new Car("Volvo", "XC70", 2010);
 
-// Print Car
+// Print Vehicles.Car
         System.out.println(volvo); // Volvo XC70 (2010)
 
-// Add Car
+// Add Vehicles.Car
         parking.add(volvo);
 
-// Remove Car
+// Remove Vehicles.Car
         System.out.println(parking.remove("Volvo", "XC90")); // false
         System.out.println(parking.remove("Volvo", "XC70")); // true
 
@@ -24,11 +24,11 @@ public class Main {
         parking.add(peugeot);
         parking.add(audi);
 
-// Get Latest Car
+// Get Latest Vehicles.Car
         Car latestCar = parking.getLatestCar();
         System.out.println(latestCar); // Peugeot 307 (2011)
 
-// Get Car
+// Get Vehicles.Car
         Car audiS4 = parking.getCar("Audi", "S4");
         System.out.println(audiS4); // Audi S4 (2005)
 

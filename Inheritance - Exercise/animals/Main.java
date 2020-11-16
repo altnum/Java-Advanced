@@ -39,11 +39,11 @@ public class Main {
                     Frog frog = new Frog(name, age, gender);
                     System.out.println(frog.toString());
                     break;
-                case "Dog":
+                case "Animals.Dog":
                     Dog dog = new Dog(name, age, gender);
                     System.out.println(dog.toString());
                     break;
-                case "Cat":
+                case "Animals.Cat":
                     Cat cat = new Cat(name, age, gender);
                     System.out.println(cat.toString());
                     break;

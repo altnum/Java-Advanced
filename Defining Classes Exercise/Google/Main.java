@@ -51,7 +51,7 @@ public class Main {
                 System.out.println("Company:");
                 if (v.getCompany() != null)
                     System.out.printf("%s %s %.2f%n", v.getCompany().getName(), v.getCompany().getDepartment(), v.getCompany().getSalary());
-                System.out.println("Car: ");
+                System.out.println("Vehicles.Car: ");
                 if (v.getCar() != null)
                     System.out.printf("%s %d%n", v.getCar().getModel(), v.getCar().getSpeed());
 
