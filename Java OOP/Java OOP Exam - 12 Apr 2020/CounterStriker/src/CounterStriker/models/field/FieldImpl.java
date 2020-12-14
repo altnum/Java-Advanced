@@ -1,12 +1,11 @@
 package CounterStriker.models.field;
 
-import CounterStriker.models.players.CounterTerrorist;
 import CounterStriker.models.players.Player;
-import CounterStriker.models.players.Terrorist;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static CounterStriker.common.OutputMessages.COUNTER_TERRORIST_WINS;
 import static CounterStriker.common.OutputMessages.TERRORIST_WINS;
@@ -24,26 +23,33 @@ public class FieldImpl implements Field {
                 counterTerrorists.add(p);
         }
 
-        while (true) {
-            terrorists.forEach(t -> {
-                int f = t.getGun().fire();
-                counterTerrorists.forEach(cT -> {
-                    cT.takeDamage(f);
-                });
-            });
+        while (counterTerrorists.stream().anyMatch(Player::isAlive) &&
+                terrorists.stream().anyMatch(Player::isAlive)) {
 
-            counterTerrorists.forEach(cT -> {
-                int f = cT.getGun().fire();
-                terrorists.forEach(t -> {
-                    t.takeDamage(f);
-                });
-            });
+            terrorists.forEach(t -> counterTerrorists.forEach(cT -> cT.takeDamage(t.getGun().fire())));
+
+            counterTerrorists = counterTerrorists.stream().filter(Player::isAlive).collect(Collectors.toList());
+
+            if (counterTerrorists.stream().noneMatch(Player::isAlive)) {
+                return TERRORIST_WINS;
+            }
+
+            counterTerrorists.forEach(cT -> terrorists.forEach(t -> t.takeDamage(cT.getGun().fire())));
+
+
+            terrorists = terrorists.stream().filter(Player::isAlive).collect(Collectors.toList());
 
             if (terrorists.stream().noneMatch(Player::isAlive)) {
                 return COUNTER_TERRORIST_WINS;
-            } else if (counterTerrorists.stream().noneMatch(Player::isAlive)) {
-                return TERRORIST_WINS;
             }
         }
+
+        if (counterTerrorists.stream().noneMatch(Player::isAlive))
+            return TERRORIST_WINS;
+        else if (terrorists.stream().anyMatch(Player::isAlive))
+            return COUNTER_TERRORIST_WINS;
+
+
+        return null;
     }
 }

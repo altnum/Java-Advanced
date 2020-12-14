@@ -16,6 +16,7 @@ public abstract class PlayerImpl implements Player {
         setHealth(health);
         setArmor(armor);
         setGun(gun);
+        isAlive = isAlive();
     }
 
     public void setUsername(String username) {
@@ -44,6 +45,10 @@ public abstract class PlayerImpl implements Player {
             throw new NullPointerException(INVALID_GUN);
 
         this.gun = gun;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
     }
 
     @Override
@@ -82,15 +87,28 @@ public abstract class PlayerImpl implements Player {
                 health -= arm;
                 if (health <= 0) {
                     health = 0;
-                    isAlive = false;
+                    setAlive(false);
                 }
             }
         } else if (armor == 0) {
             health -= points;
             if (health <= 0) {
                 health = 0;
-                isAlive = false;
+                setAlive(false);
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(String.format("%s: %s", this.getClass().getSimpleName(), this.getUsername()));
+        sb.append(System.lineSeparator());
+        sb.append("--Health: ").append(this.getHealth());
+        sb.append(System.lineSeparator());
+        sb.append("--Armor: ").append(this.getArmor());
+        sb.append(System.lineSeparator());
+        sb.append("--Gun: ").append(this.getGun().getName());
+
+        return sb.toString();
     }
 }

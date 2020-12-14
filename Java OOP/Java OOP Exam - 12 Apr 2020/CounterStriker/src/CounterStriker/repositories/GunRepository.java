@@ -2,18 +2,19 @@ package CounterStriker.repositories;
 
 import CounterStriker.models.guns.Gun;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import static CounterStriker.common.ExceptionMessages.INVALID_GUN_REPOSITORY;
 
 public class GunRepository<T extends Gun> implements Repository<T> {
-    Collection<T> models;
+    Collection<T> models = new ArrayList<>();
+
 
     @Override
     public Collection<T> getModels() {
-        return null;
+        return this.models;
     }
 
     @Override

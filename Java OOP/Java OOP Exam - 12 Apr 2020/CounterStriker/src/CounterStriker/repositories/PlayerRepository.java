@@ -2,17 +2,18 @@ package CounterStriker.repositories;
 
 import CounterStriker.models.players.Player;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
 import static CounterStriker.common.ExceptionMessages.INVALID_PLAYER_REPOSITORY;
 
 public class PlayerRepository<T extends Player> implements Repository<T> {
-    Collection<T> models;
+    Collection<T> models = new ArrayList<>();
 
     @Override
     public Collection<T> getModels() {
-        return null;
+        return this.models;
     }
 
     @Override

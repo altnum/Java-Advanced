@@ -28,22 +28,26 @@ public abstract class GunImpl implements Gun {
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public int getBulletsCount() {
-        return 0;
+        return bulletsCount;
     }
 
     @Override
     public int fire() {
         if (this.getClass().getSimpleName().equals("Pistol")) {
-            if (bulletsCount - 1 >= 0)
+            if (bulletsCount - 1 >= 0) {
+                setBulletsCount(bulletsCount - 1);
                 return 1;
+            }
         } else if (this.getClass().getSimpleName().equals("Rifle")) {
-            if (bulletsCount - 10 >= 0)
+            if (bulletsCount - 10 >= 0) {
+                setBulletsCount(bulletsCount - 10);
                 return 10;
+            }
         }
         return 0;
     }
